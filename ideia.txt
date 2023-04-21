@@ -7,4 +7,6 @@ Requisitos:
 
     * Usar alguma funcionalidade de mapas, além do que foi mostrado em aula
 
+    Procurar uma receita e o mesmo mostrar quais mercados próximo possuem os ingredientes.
+
     
