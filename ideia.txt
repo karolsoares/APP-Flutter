@@ -1,7 +1,7 @@
 Requisitos:
     * Usar consumo de web service com Retrofit;
 
-    * Usar mapas;
+    * Usar mapas; - OK
 
     * Ter no mínimo duas telas;
 
