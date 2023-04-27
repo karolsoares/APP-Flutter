@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'src/locations.dart' as locations;
+import 'package:logger/logger.dart';
+import 'api_retrofit.dart' as retrofit;
+import 'package:dio/dio.dart';
+import 'pages/login.page.dart';
 
-void main() {
-  runApp(const MyApp());
+final logger = Logger();
+void main(List<String> args) {
+  runApp(const MyLogin());
+  final dio = Dio(); // Provide a dio instance
+  dio.options.headers["Demo-Header"] =
+      "demo header"; // config your dio headers globally
+  final client = retrofit.RestClient(dio);
+
+  client.getTasks().then((it) => logger.i(it));
 }
 
 class MyApp extends StatefulWidget {
@@ -11,6 +22,25 @@ class MyApp extends StatefulWidget {
 
   @override
   _MyAppState createState() => _MyAppState();
+}
+
+class MyLogin extends StatefulWidget {
+  const MyLogin({Key? key}) : super(key: key);
+
+  @override
+  _MyLoginState createState() => _MyLoginState();
+}
+
+//Tela de Login
+class _MyLoginState extends State<MyLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'login.io',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: LoginPage(),
+    );
+  }
 }
 
 class _MyAppState extends State<MyApp> {
