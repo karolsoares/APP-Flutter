@@ -14,12 +14,13 @@ abstract class RestClient {
 
 @JsonSerializable()
 class Task {
-  String? id;
-  String? name;
-  String? avatar;
-  String? createdAt;
+  String? email;
+  String? senha;
 
-  Task({this.id, this.name, this.avatar, this.createdAt});
+  Task({
+    this.email,
+    this.senha,
+  });
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
   Map<String, dynamic> toJson() => _$TaskToJson(this);

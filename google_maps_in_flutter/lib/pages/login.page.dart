@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_maps_in_flutter/src/locations.dart';
+import 'package:google_maps_in_flutter/api_retrofit.dart' as autenticacao;
+import 'package:retrofit/retrofit.dart';
 
 import '../main.dart';
 
