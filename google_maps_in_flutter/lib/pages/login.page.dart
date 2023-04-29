@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_maps_in_flutter/src/locations.dart';
+
+import '../main.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextFormField(
                   autofocus: true,
@@ -36,19 +40,21 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.blue, fontSize: 30),
                     decoration: InputDecoration(
                       labelText: "Senha",
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: TextStyle(color: Colors.white),
                     )),
                 Divider(),
-                ButtonTheme(
-                  padding: const EdgeInsets.all(16.0),
-                  height: 60.0,
-                  child: ElevatedButton(
-                    child: const Text('Entrar'),
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        textStyle:
-                            const TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 20),
+                      minimumSize: const Size(5.0, 15.0),
+                      maximumSize: const Size(5.0, 20.0)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyApp()),
+                    );
+                  },
+                  child: const Text('Entrar'),
                 ),
               ],
             ),
