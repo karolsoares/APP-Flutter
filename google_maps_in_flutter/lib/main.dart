@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'src/locations.dart' as locations;
+<<<<<<< Updated upstream
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,42 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+=======
+import 'api_retrofit.dart' as retrofit;
+import 'package:dio/dio.dart';
+import 'pages/login.page.dart';
+
+void main() {
+  runApp(const MyLogin());
+}
+
+class MyLogin extends StatefulWidget {
+  const MyLogin({Key? key}) : super(key: key);
+
+  @override
+  _MyLoginState createState() => _MyLoginState();
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+//Tela de Login
+class _MyLoginState extends State<MyLogin> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'login.io',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: LoginPage(),
+    );
+  }
+}
+
+>>>>>>> Stashed changes
 class _MyAppState extends State<MyApp> {
   final Map<String, Marker> _markers = {};
   Future<void> _onMapCreated(GoogleMapController controller) async {

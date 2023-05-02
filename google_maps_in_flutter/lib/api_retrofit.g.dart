@@ -3,6 +3,7 @@
 part of 'api_retrofit.dart';
 
 // **************************************************************************
+<<<<<<< Updated upstream
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -21,6 +22,8 @@ Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
     };
 
 // **************************************************************************
+=======
+>>>>>>> Stashed changes
 // RetrofitGenerator
 // **************************************************************************
 
@@ -31,7 +34,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://5d42a6e2bc64f90014a56ca0.mockapi.io/api/v1/';
+    baseUrl ??= 'https://644d66e757f12a1d3dde9065.mockapi.io/api/';
   }
 
   final Dio _dio;
@@ -39,28 +42,49 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<Task>> getTasks() async {
+  Future<List<UserModel>> findAll() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Task>>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<UserModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/tasks',
+              '/USERS',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => Task.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => UserModel.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
+  }
+
+  @override
+  Future<void> save(user) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(user.toJson());
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/USERS',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
