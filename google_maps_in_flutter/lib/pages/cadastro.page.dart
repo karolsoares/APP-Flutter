@@ -50,7 +50,7 @@ class _MeuCadastroState extends State<MeuCadastro> {
                   obscureText: true,
                   keyboardType: TextInputType.text,
                   controller: senhaEditingController,
-                  style: TextStyle(color: Colors.blue, fontSize: 30),
+                  style: TextStyle(color: Colors.blue, fontSize: 20),
                   decoration: InputDecoration(
                     labelText: "Senha",
                     labelStyle: TextStyle(color: Colors.white),
