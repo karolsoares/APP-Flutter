@@ -1,9 +1,4 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:google_maps_in_flutter/models/user_models.dart';
 import 'package:google_maps_in_flutter/pages/cadastro.page.dart';
 import 'package:google_maps_in_flutter/api_retrofit.dart' as autenticacao;
 import 'package:retrofit/retrofit.dart';
@@ -11,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'cadastro.page.dart';
 
 import '../main.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,13 +15,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _repository = autenticacao.RestClient(Dio());
+  final _formField = GlobalKey<FormState>();
   final emailEditingController = TextEditingController();
   final senhaEditingController = TextEditingController();
+  bool passToggle = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[200],
+        backgroundColor: Colors.grey[425],
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
@@ -37,22 +35,23 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   autofocus: true,
                   keyboardType: TextInputType.number,
-                  style: const TextStyle(color: Colors.white, fontSize: 20),
+                  style: const TextStyle(color: Colors.white, fontSize: 30),
                   decoration: const InputDecoration(
                     labelText: "Email",
                     labelStyle: TextStyle(color: Colors.white),
                   ),
                 ),
                 Divider(),
-                TextField(
-                    autofocus: true,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.blue, fontSize: 30),
-                    decoration: InputDecoration(
-                      labelText: "Senha",
-                      labelStyle: TextStyle(color: Colors.white),
-                    )),
+                TextFormField(
+                  autofocus: true,
+                  obscureText: true,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(color: Colors.blue, fontSize: 30),
+                  decoration: InputDecoration(
+                    labelText: "Senha",
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                ),
                 Divider(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(

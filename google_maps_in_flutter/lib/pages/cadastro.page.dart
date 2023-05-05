@@ -21,7 +21,7 @@ class _MeuCadastroState extends State<MeuCadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[200],
+      backgroundColor: Colors.grey[425],
       //floatingActionButton: FloatingActionButton(
       //onPressed: () => newUser(),
       //child: Icon(Icons.person),
@@ -38,7 +38,7 @@ class _MeuCadastroState extends State<MeuCadastro> {
                 autofocus: true,
                 keyboardType: TextInputType.number,
                 controller: emailEditingController,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                style: const TextStyle(color: Colors.white, fontSize: 30),
                 decoration: const InputDecoration(
                   labelText: "Email",
                   labelStyle: TextStyle(color: Colors.white),

@@ -28,8 +28,9 @@ class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'login.io',
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(primaryColor: Colors.black45),
       home: LoginPage(),
     );
   }
