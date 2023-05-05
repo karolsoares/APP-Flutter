@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[200],
+        backgroundColor: Colors.grey[300],
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                     autofocus: true,
                     obscureText: true,
                     keyboardType: TextInputType.text,
-                    style: TextStyle(color: Colors.blue, fontSize: 30),
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
                     decoration: InputDecoration(
                       labelText: "Senha",
                       labelStyle: TextStyle(color: Colors.white),
