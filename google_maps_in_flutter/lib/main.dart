@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'src/locations.dart' as locations;
-
+import 'models/locations.dart' as locations;
 import 'api_retrofit.dart' as retrofit;
 import 'package:dio/dio.dart';
 import 'pages/login.page.dart';
@@ -39,19 +38,19 @@ class _MyLoginState extends State<MyLogin> {
 class _MyAppState extends State<MyApp> {
   final Map<String, Marker> _markers = {};
   Future<void> _onMapCreated(GoogleMapController controller) async {
-    final googleOffices = await locations.getGoogleOffices();
+    final campusAtitus = await locations.getCampusAtitus();
     setState(() {
       _markers.clear();
-      for (final office in googleOffices.offices) {
+      for (final campus in campusAtitus.campus) {
         final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
+          markerId: MarkerId(campus.name),
+          position: LatLng(campus.lat, campus.long),
           infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
+            title: campus.name,
+            snippet: campus.info,
           ),
         );
-        _markers[office.name] = marker;
+        _markers[campus.name] = marker;
       }
     });
   }
@@ -59,16 +58,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Google Office Locations'),
-          backgroundColor: Colors.green[700],
+          title: const Text('Localização dos Campus da Atitus'),
+          backgroundColor: Colors.black,
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(
-            target: LatLng(0, 0),
-            zoom: 2,
+            target: LatLng(-28.26484618532507, -52.39721135998046),
+            zoom: 11.5,
           ),
           markers: _markers.values.toSet(),
         ),

@@ -5,7 +5,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_maps_in_flutter/models/user_models.dart';
 import 'package:google_maps_in_flutter/pages/cadastro.page.dart';
-import 'package:google_maps_in_flutter/src/locations.dart';
 import 'package:google_maps_in_flutter/api_retrofit.dart' as autenticacao;
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
