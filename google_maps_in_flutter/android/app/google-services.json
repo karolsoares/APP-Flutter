@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "216949105895",
+    "project_id": "campus-atitus",
+    "storage_bucket": "campus-atitus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216949105895:android:57e8b41dacfbc3ebef6e42",
+        "android_client_info": {
+          "package_name": "com.example.google_maps_in_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216949105895-l3s2mq0mp1arp73h2ctkbs2t10avbimu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiccOnSRDZ2wqpBOmMkIOvIKu6FpQnaw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216949105895-l3s2mq0mp1arp73h2ctkbs2t10avbimu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

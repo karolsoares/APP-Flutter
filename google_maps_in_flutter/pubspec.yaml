@@ -44,6 +44,8 @@ dependencies:
   flutter_polyline_points: ^1.0.0
   http: ^0.13.5
   json_serializable: ^6.6.1
+  firebase_core: ^2.13.1
+  firebase_auth: ^4.6.2
 
 dev_dependencies:
   flutter_test:
