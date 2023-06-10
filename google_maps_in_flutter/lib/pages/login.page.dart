@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_in_flutter/pages/cadastro.page.dart';
 import 'package:google_maps_in_flutter/api_retrofit.dart' as autenticacao;
+import 'package:google_maps_in_flutter/service/autenticacao.dart';
+import 'package:provider/provider.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'cadastro.page.dart';
@@ -44,6 +46,28 @@ class _LoginPageState extends State<LoginPage> {
         toggleButton = 'Voltar ao Login';
       }
     });
+  }
+
+  login() async {
+    try {
+      await context
+          .read<Autenticacao>()
+          .login(emailEditingController.text, senhaEditingController.text);
+    } on Autenticacao catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error')));
+    }
+  }
+
+  registrar() async {
+    try {
+      await context
+          .read<Autenticacao>()
+          .login(emailEditingController.text, senhaEditingController.text);
+    } on Autenticacao catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error')));
+    }
   }
 
   @override
