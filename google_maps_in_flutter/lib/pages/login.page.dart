@@ -16,7 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _repository = autenticacao.RestClient(Dio());
+  //final _repository = autenticacao.RestClient(Dio());
   final _formField = GlobalKey<FormState>();
   final emailEditingController = TextEditingController();
   final senhaEditingController = TextEditingController();
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 TextFormField(
                   autofocus: true,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(color: Colors.white, fontSize: 30),
                   decoration: const InputDecoration(
                     labelText: "Email",
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Informe sau senha!';
+                      return 'Informe sua senha!';
                     } else if (value.length < 6) {
                       return 'Sua senha deve ter no mínimo 6 caracteres';
                     }
@@ -116,16 +116,10 @@ class _LoginPageState extends State<LoginPage> {
                       textStyle: const TextStyle(fontSize: 20),
                       minimumSize: const Size(5.0, 15.0),
                       maximumSize: const Size(5.0, 20.0)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyApp()),
-                    );
-                    setState(() {});
-                  },
                   child: Text(
                     actionButton,
                   ),
+                  onPressed: () {},
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -146,5 +140,11 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 }
+
+// Navigator.push(
+  //context,
+    //MaterialPageRoute(builder: (context) => MyApp()),
+      //);
+        //setState(() {});
 
 // ignore: non_constant_identifier_names

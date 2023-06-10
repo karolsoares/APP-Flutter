@@ -17,12 +17,10 @@ class Autenticacao extends ChangeNotifier {
   }
 
   _authCheck() {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('Usuário está atualmente desconectado!');
-      } else {
-        print('O usuário está conectado!');
-      }
+    _auth.authStateChanges().listen((User? user) {
+      usuario = (user == null) ? null : user;
+      isLoading = false;
+      notifyListeners();
     });
   }
 

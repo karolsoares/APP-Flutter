@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_in_flutter/service/autenticacao.dart';
+import 'package:google_maps_in_flutter/widgets/auth_check.dart';
 import 'models/locations.dart' as locations;
 import 'api_retrofit.dart' as retrofit;
 import 'package:dio/dio.dart';
@@ -12,10 +13,13 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  //await HiveConfig.start();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => Autenticacao()),
+    ], child: MyLogin()),
   );
-  runApp(MyLogin());
 }
 
 class MyLogin extends StatefulWidget {
@@ -40,7 +44,7 @@ class _MyLoginState extends State<MyLogin> {
       debugShowCheckedModeBanner: false,
       title: 'login.io',
       theme: ThemeData(primaryColor: Colors.black45),
-      home: LoginPage(),
+      home: AuthCheck(),
     );
   }
 }
