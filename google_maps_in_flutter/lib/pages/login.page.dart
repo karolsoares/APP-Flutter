@@ -18,7 +18,33 @@ class _LoginPageState extends State<LoginPage> {
   final _formField = GlobalKey<FormState>();
   final emailEditingController = TextEditingController();
   final senhaEditingController = TextEditingController();
+
   bool passToggle = true;
+  bool isLogin = true;
+  late String titulo;
+  late String actionButton;
+  late String toggleButton;
+
+  @override
+  void initState() {
+    super.initState();
+    setFormAction(true);
+  }
+
+  setFormAction(bool acao) {
+    setState(() {
+      isLogin = acao;
+      if (isLogin) {
+        titulo = 'Bem vindo';
+        actionButton = 'Login';
+        toggleButton = 'Ainda não tem conta? Cadastre-se agora.';
+      } else {
+        titulo = 'Crie sua conta';
+        actionButton = 'Cadastrar';
+        toggleButton = 'Voltar ao Login';
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +77,14 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: "Senha",
                     labelStyle: TextStyle(color: Colors.white),
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Informe sau senha!';
+                    } else if (value.length < 6) {
+                      return 'Sua senha deve ter no mínimo 6 caracteres';
+                    }
+                    return null;
+                  },
                 ),
                 Divider(),
                 ElevatedButton(
@@ -65,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                     );
                     setState(() {});
                   },
-                  child: const Text('Entrar'),
+                  child: Text(
+                    actionButton,
+                  ),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
