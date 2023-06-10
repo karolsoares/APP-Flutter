@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_in_flutter/service/autenticacao.dart';
 import 'models/locations.dart' as locations;
 import 'api_retrofit.dart' as retrofit;
 import 'package:dio/dio.dart';
 import 'pages/login.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await Firebase.initializeApp();
-  runApp(const MyLogin());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => Autenticacao()),
+    ],
+    child: MyLogin(),
+  ));
 }
 
 class MyLogin extends StatefulWidget {
